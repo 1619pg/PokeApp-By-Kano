@@ -31,3 +31,14 @@ fetch(POKE_URL + name)
 fetchPokemon("ditto")
 fetchPokemon("pikachu")
 fetchPokemon("snorlax")
+
+const fetch100Pokemon =function(){
+    let pokemonURL = POKE_URL+"?limit=100"
+    fetch(pokemonURL)
+    .then(response =>response.json())
+    .then(data=>{
+        // console.log(data)
+        data.results.forEach(result => fetchPokemon(result.name))
+    })
+}
+fetch100Pokemon()
